@@ -6,7 +6,6 @@ edition = "2018"
 
 [dependencies]
 regex = "1.5"
-num-traits = "0.2.14"
 
 [lib]
 name = "baxa_core"

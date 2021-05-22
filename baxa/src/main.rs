@@ -1,5 +1,5 @@
 use baxa_core::{error, baxa, bxvm};
-use baxa_core::bxvm::bytecodes::*;
+use baxa_core::bxvm::bytecode::*;
 
 fn main() -> Result<(), error::Error>{
     // match baxa::file_manager::load_from("lol.bx") {
@@ -7,17 +7,15 @@ fn main() -> Result<(), error::Error>{
     //     Err(error) => println!("{}", error)
     // }
 
-    let bytecode = [
-                PRINT, 22,
-                STOP,
-                SET, REG2, 9,
-                ADD, REG1,       // reg1 = 9
-                PRINT, REG1, 
-                PRINT, REG2,
-                GOIF, 3, REG1, REG2,
-                PRINT, 33
+    let bytecode: [Bytecode; 5] = [
+            Bytecode::Instruction(PRINT), Bytecode::Data(Value::BxStr((&"Hola Mundo").to_string())),
+            Bytecode::Instruction(ADD), Bytecode::Data(Value::BxInt(9)), Bytecode::Data(Value::BxInt(9))
     ];
-    let mut vm = bxvm::vm::Vm::new();
-    vm.interpret_bytecode(&bytecode)?;
+
+    baxa::file_manager::write_contents_to("lol.bx", &compile(&bytecode))?;
+
+
+    //let mut vm = bxvm::vm::Vm::new();
+    //vm.interpret_bytecode(&bytecode)?;
     Ok(())
 }

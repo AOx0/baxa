@@ -19,7 +19,7 @@ pub fn load_from(path: &str) -> Result<String, Error> {
     Ok(String::from_utf8(file_contents)?)
 }
 
-pub fn write_contents_to(path: &str, contents: String) -> Result<(), Error> {
+pub fn write_contents_to(path: &str, contents: &[u8]) -> Result<(), Error> {
     let mut file = OpenOptions::new()
         .read(true)
         .write(true)
@@ -27,7 +27,7 @@ pub fn write_contents_to(path: &str, contents: String) -> Result<(), Error> {
         .append(false)
         .open(path)?;
 
-    file.write(contents.as_bytes())?;
+    file.write(contents)?;
     Ok(())
 }
 

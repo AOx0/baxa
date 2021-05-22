@@ -11,7 +11,7 @@ pub mod baxa {
 /// Baxa virtual machine
 pub mod bxvm {
     /// Definition of "asm"  bytecodes for bxvm
-    pub mod bytecodes;
+    pub mod bytecode;
     /// Main interface of bxvm
     pub mod vm;
     /// Definition of the heap and all its methods
