@@ -1,0 +1,19 @@
+[package]
+name = "baxa"
+version = "0.1.0"
+authors = ["AOx0 <50227494+AOx0@users.noreply.github.com>"]
+edition = "2018"
+
+[dependencies]
+regex = "1.5"
+num-traits = "0.2.14"
+
+[lib]
+name = "baxa_core"
+path = "baxa_core/src/main.rs"
+
+[[bin]]
+name = "baxa"
+path = "baxa/src/main.rs"
+
+ 
